@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+pydantic[email]
+psycopg2-binary
+python-jose[cryptography]
+passlib[bcrypt]
+python-dotenv      # For .env file
+sqlalchemy         # For database interaction (even if not using full ORM, useful for connection pooling)
+alembic            # For migrations (optional, but good practice)
+asyncpg            # Alternative async PostgreSQL driver, good with FastAPI's async nature
