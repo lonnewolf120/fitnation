@@ -1,0 +1,55 @@
+<mxGraphModel>
+  <root>
+    <mxCell id="0"/>
+    <mxCell id="1" parent="0"/>
+    <!-- Groups -->
+    <mxCell id="frontend" value="Frontend" style="swimlane" parent="1"/>
+    <mxCell id="backend" value="Backend" style="swimlane" parent="1"/>
+    <mxCell id="external" value="External Services" style="swimlane" parent="1"/>
+    <!-- Frontend Components -->
+    <mxCell id="user" value="App User" style="shape=actor" parent="frontend"/>
+    <mxCell id="flutter_app" value="Flutter Mobile App" style="shape=component" parent="frontend"/>
+    <mxCell id="device_caps" value="Device Capabilities" style="swimlane" parent="frontend"/>
+    <mxCell id="camera" value="Camera (Barcode)" style="shape=artifact" parent="device_caps"/>
+    <mxCell id="gallery" value="Gallery/Files (Media)" style="shape=artifact" parent="device_caps"/>
+    <mxCell id="audio" value="Audio Controls (Music)" style="shape=artifact" parent="device_caps"/>
+    <!-- Backend Components -->
+    <mxCell id="api_gateway" value="API Gateway" style="shape=component" parent="backend"/>
+    <mxCell id="load_balancer" value="Load Balancer" style="shape=component" parent="backend"/>
+    <mxCell id="microservices" value="Microservices" style="swimlane" parent="backend"/>
+    <mxCell id="auth_service" value="User &amp; Auth Service" style="shape=component" parent="microservices"/>
+    <mxCell id="profile_service" value="Profile Service" style="shape=component" parent="microservices"/>
+    <mxCell id="feed_service" value="Community Feed Service" style="shape=component" parent="microservices"/>
+    <mxCell id="workout_service" value="Workout Service" style="shape=component" parent="microservices"/>
+    <mxCell id="health_service" value="Health Tracking Service" style="shape=component" parent="microservices"/>
+    <mxCell id="nutrition_service" value="Nutrition Service" style="shape=component" parent="microservices"/>
+    <mxCell id="ai_service" value="AI Recommendation Service" style="shape=component" parent="microservices"/>
+    <mxCell id="media_service" value="Media Upload Service" style="shape=component" parent="microservices"/>
+    <mxCell id="video_service" value="Video Streaming Service" style="shape=component" parent="microservices"/>
+    <mxCell id="database" value="Database" style="shape=cylinder" parent="backend"/>
+    <mxCell id="cache" value="Cache (Redis)" style="shape=component" parent="backend"/>
+    <!-- External Services -->
+    <mxCell id="food_db_api" value="Food Database API" style="shape=component" parent="external"/>
+    <mxCell id="ai_ml_service" value="AI/ML Service" style="shape=component" parent="external"/>
+    <mxCell id="music_api" value="Music Streaming API" style="shape=component" parent="external"/>
+    <mxCell id="payment_api" value="Payment Gateway API" style="shape=component" parent="external"/>
+    <mxCell id="cloud_storage" value="Cloud Storage" style="shape=component" parent="external"/>
+    <mxCell id="cdn" value="CDN (Video Streaming)" style="shape=component" parent="external"/>
+    <!-- Connections -->
+    <mxCell id="user_to_app" edge="1" parent="1" source="user" target="flutter_app"/>
+    <mxCell id="app_to_api" edge="1" parent="1" source="flutter_app" target="api_gateway"/>
+    <mxCell id="app_to_music" edge="1" parent="1" source="flutter_app" target="music_api"/>
+    <mxCell id="app_to_payment" edge="1" parent="1" source="flutter_app" target="payment_api"/>
+    <mxCell id="app_to_camera" edge="1" parent="frontend" source="flutter_app" target="camera"/>
+    <mxCell id="app_to_gallery" edge="1" parent="frontend" source="flutter_app" target="gallery"/>
+    <mxCell id="app_to_audio" edge="1" parent="frontend" source="flutter_app" target="audio"/>
+    <mxCell id="api_to_lb" edge="1" parent="backend" source="api_gateway" target="load_balancer"/>
+    <mxCell id="lb_to_micro" edge="1" parent="backend" source="load_balancer" target="microservices"/>
+    <mxCell id="micro_to_db" edge="1" parent="backend" source="microservices" target="database"/>
+    <mxCell id="micro_to_cache" edge="1" parent="backend" source="microservices" target="cache"/>
+    <mxCell id="nutrition_to_food" edge="1" parent="1" source="nutrition_service" target="food_db_api"/>
+    <mxCell id="ai_to_ml" edge="1" parent="1" source="ai_service" target="ai_ml_service"/>
+    <mxCell id="media_to_storage" edge="1" parent="1" source="media_service" target="cloud_storage"/>
+    <mxCell id="video_to_cdn" edge="1" parent="1" source="video_service" target="cdn"/>
+  </root>
+</mxGraphModel>
