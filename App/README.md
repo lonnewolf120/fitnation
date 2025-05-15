@@ -30,10 +30,10 @@ Install
 ====
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
       alt="Get Feeel on F-Droid"
-      height="80">](https://f-droid.org/packages/com.enjoyingfoss.feeel/)
+      height="80">](https://f-droid.org/packages/com.semaphore.athlytiq/)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
       alt="Get Feeel on Google Play"
-      height="80">](https://play.google.com/store/apps/details?id=com.enjoyingfoss.feeel)
+      height="80">](https://play.google.com/store/apps/details?id=com.semaphore.athlytiq)
 [<img src="https://flathub.org/api/badge?locale=en"
       alt="Get the Feeel Flatpak on Flathub"
-      height="54">](https://flathub.org/apps/details/com.enjoyingfoss.feeel)
+      height="54">](https://flathub.org/apps/details/com.semaphore.athlytiq)

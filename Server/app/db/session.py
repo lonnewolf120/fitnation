@@ -9,8 +9,6 @@ async_engine = create_async_engine(
     settings.DATABASE_URL,
     echo=False,  # Set to True for debugging SQL queries
     pool_pre_ping=True,
-    # Supabase (and other cloud DBs) might have aggressive connection timeouts.
-    # These settings help manage connection pooling more robustly.
     pool_recycle=1800, # Recycle connections every 30 minutes
     pool_size=10,      # Default is 5, adjust based on expected load
     max_overflow=20    # Default is 10
@@ -38,7 +36,7 @@ async def get_db_session() -> AsyncSession:
             raise
         finally:
             await session.close() # Ensure session is closed
-    
+
 # Raw asyncpg pool is not strictly necessary if all interaction is via SQLAlchemy session
 # but can be kept if you have specific use cases for it.
 # For simplicity with Supabase as a straightforward PG provider, relying on SQLAlchemy's

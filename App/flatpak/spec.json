@@ -1,5 +1,5 @@
 {
-    "appId": "com.enjoyingfoss.feeel",
+    "appId": "com.semaphore.athlytiq",
     "releases": [
         {
             "version": "3.0.0",
@@ -14,21 +14,21 @@
     "runtimeVersion": "22.08",
     "linuxReleaseBundleDirPath": "../build/linux/x64/release/bundle",
     "linuxArmReleaseBundleDirPath": "../build/linux/aarch64/release/bundle",
-    "appDataPath": "com.enjoyingfoss.feeel.appdata.xml",
-    "desktopPath": "com.enjoyingfoss.feeel.desktop",
+    "appDataPath": "com.semaphore.athlytiq.appdata.xml",
+    "desktopPath": "com.semaphore.athlytiq.desktop",
     "icons": {
-        "symbolic": "icons/com.enjoyingfoss.feeel-symbolic.svg",
-        "24x24": "icons/24x24/com.enjoyingfoss.feeel.png",
-        "32x32": "icons/32x32/com.enjoyingfoss.feeel.png",
-        "48x48": "icons/48x48/com.enjoyingfoss.feeel.png",
-        "128x128": "icons/128x128/com.enjoyingfoss.feeel.png",
-        "256x256": "icons/256x256/com.enjoyingfoss.feeel.png",
-        "512x512": "icons/512x512/com.enjoyingfoss.feeel.png"
+        "symbolic": "icons/com.semaphore.athlytiq-symbolic.svg",
+        "24x24": "icons/24x24/com.semaphore.athlytiq.png",
+        "32x32": "icons/32x32/com.semaphore.athlytiq.png",
+        "48x48": "icons/48x48/com.semaphore.athlytiq.png",
+        "128x128": "icons/128x128/com.semaphore.athlytiq.png",
+        "256x256": "icons/256x256/com.semaphore.athlytiq.png",
+        "512x512": "icons/512x512/com.semaphore.athlytiq.png"
     },
     "buildCommandsAfterUnpack": [
         "ln -s /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 /app/lib/libsqlite3.so",
         "if [ ! -e '/app/lib/libsqlite3.so' ]; then ln -s -f /usr/lib/aarch64-linux-gnu/libsqlite3.so.0 /app/lib/libsqlite3.so; fi",
-        "if [ $(arch)=\"aarch64\"  ]; then sed -si \"/Exec=/cExec=env LIBGL_ALWAYS_SOFTWARE=1 feeel\" feeel/com.enjoyingfoss.feeel.desktop; fi"
+        "if [ $(arch)=\"aarch64\"  ]; then sed -si \"/Exec=/cExec=env LIBGL_ALWAYS_SOFTWARE=1 feeel\" feeel/com.semaphore.athlytiq.desktop; fi"
     ],
     "finishArgs": [
         "--share=ipc",

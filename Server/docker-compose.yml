@@ -1,34 +1,11 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:15-alpine # Using a specific version is good practice
-    container_name: fitness_db
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
-      # Optional: Mount your sql/schema.sql to initialize DB on first run
-      # - ./sql/schema.sql:/docker-entrypoint-initdb.d/init.sql
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres} # Use from .env or default
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-secret}
-      POSTGRES_DB: ${POSTGRES_DB:-fitness_app}
-    ports:
-      - "5432:5432" # Expose DB port to host (careful with port conflicts)
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-fitness_app}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
   api:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: fitness_api
-    depends_on:
-      db:
-        condition: service_healthy # Wait for DB to be healthy
     ports:
       - "8000:8000"
     volumes:
@@ -38,15 +15,10 @@ services:
       # - ./main.py:/app/main.py
     env_file:
       - .env # Load environment variables from .env file
-    environment:
-      # Override DATABASE_URL to point to the 'db' service within Docker network
-      DATABASE_URL: "postgresql+asyncpg://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-secret}@db:5432/${POSTGRES_DB:-fitness_app}"
-      # Other environment variables can be defined here or loaded from .env
-      # SECRET_KEY: ${SECRET_KEY}
-      # ALGORITHM: ${ALGORITHM}
-      # ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES}
+    # DATABASE_URL will be read directly from the .env file
+    # It should be your Supabase connection string
     command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload # Enable reload for dev
     restart: unless-stopped
 
-volumes:
-  postgres_data: # Defines a named volume for persisting DB data
+# No 'volumes' needed here unless your app needs other persistent local storage,
+# which is unlikely for this setup.
